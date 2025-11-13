@@ -29,6 +29,11 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
+            background-image: url('Capture.jpg'); /* Add your background image path here */
+            background-size: 100% 100%;  /* Stretches the background image to fill the entire viewport */
+            background-position: center center;  /* Centers the background image */
+            background-repeat: no-repeat;  /* Prevents the background image from repeating */
+            height: 100vh;  /* Ensures the body takes up the full viewport height */
         }
     }
 
@@ -87,14 +92,12 @@
             <div class="text-center">
                 <div class="text-8xl mb-2">
                     <div class="dogpic">
-                        <img src="make a sticker of th.png" alt="">
-                        <button class="buttonplay" onclick="playSound()"></button>
-
-  <audio id="sound" src="naw (online-audio-converter.com).mp3"></audio>
-
+                        <img src="make a sticker of th.png" alt="French Bulldog">
+                        <button class="buttonplay" aria-label="Play sound" onclick="playSound()"></button>
+                        <audio id="sound" src="naw (online-audio-converter.com).mp3"></audio>
                     </div>
                 </div>
-                <div class="text-xl font-bold text-[var(--accent-color)] text-shadow">DID YOU EAT A TREE YES OR NAW!</div>
+                <div class="text-xl font-bold text-[var(--accent-color)] text-shadow">WOOF!</div>
             </div>
         </div>
     </div>
@@ -105,10 +108,15 @@
     </div>
     <script>
     function playSound() {
-  const audio = document.getElementById('sound');
-  audio.currentTime = 0; // restart from the beginning
-  audio.play();
-}
-  </script>
+      const audio = document.getElementById('sound');
+      if (audio) {
+        audio.currentTime = 0; // restart from the beginning
+        audio.play().catch(error => {
+          console.error("Audio play failed: ", error);
+        });
+      }
+    }
+    </script>
 </body>
 </html>
+
